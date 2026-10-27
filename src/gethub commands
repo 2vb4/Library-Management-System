@@ -1,0 +1,20 @@
+Routine: Save & Upload Future Changes
+1-Stage all your changes:
+
+PowerShell:
+
+git add .
+
+2-Save a local snapshot with a description of what you worked on:
+
+PowerShell:
+
+git commit -m "Add setters and constructors to LibraryItem"
+
+(Replace the message inside the quotes with whatever changes you made).
+
+3-Upload your updates to GitHub:
+
+PowerShell:
+
+git push
