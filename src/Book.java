@@ -36,6 +36,7 @@ public class Book {
         return numberOfCopies;
     }
 
+    //chick if the number of copies is bigger than 0
     public void setNumberOfCopies(int numberOfCopies) {
         if (numberOfCopies >= 0) {
             this.numberOfCopies = numberOfCopies;

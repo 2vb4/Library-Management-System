@@ -15,6 +15,8 @@ public class Magazine {
     public int getIssueNumber() {
         return issueNumber;
     }
+
+    //chick if the set issue number is bigger than 0
     public void setIssueNumber(int issueNumber) {
         if (issueNumber > 0) {
             this.issueNumber = issueNumber;

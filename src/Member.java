@@ -38,7 +38,7 @@ public Member (String memberId, String name, int age, String email){
     public int getAge() {
         return age;
     }
-
+//chick if age is bigger or equal 12
     public void setAge(int age) {// maybe there was no need for age chick please change if u agree
         if(age >= 12){
             this.age = age;
