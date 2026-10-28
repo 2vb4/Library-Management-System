@@ -54,7 +54,7 @@ public Member (String memberId, String name, int age, String email){
     }
 
     public void setEmail(String email) {
-        //checking for: text + @ + domain + .extension
+        //regex checking for: text + @ + domain + .extension
         String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,}$";
 
         if (email != null && email.matches(emailRegex)) {
