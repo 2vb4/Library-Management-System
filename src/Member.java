@@ -32,7 +32,15 @@ public Member (String memberId, String name, int age, String email){
     }
 
     public void setMemberId(String memberId) {
-        this.memberId = memberId;
+        // هنا نشيك على صيغة رقم العضو: لازم يبدأ بحرف واحد وبعده من 3 إلى 5 أرقام (زي M001 أو M1234)
+        String idRegex = "^[A-Za-z]\\d{3,5}$";
+
+        // نتأكد إن القيمة مو فاضية وتطابق شرط الـ RegEx
+        if (memberId != null && memberId.matches(idRegex)) {
+            this.memberId = memberId;
+        } else {
+            throw new IllegalArgumentException("Invalid ID: must start with 1 letter followed by 3 to 5 digits.");
+        }
     }
 
     public int getAge() {

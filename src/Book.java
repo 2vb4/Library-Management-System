@@ -32,7 +32,16 @@
 // تراك زدت { هنا يا عزوز
 
      public void setIsbn(String isbn) {
-         this.isbn = isbn;
+
+         // يقبل إما 10 أرقام أو 13 رقماً (زي: "1234567890" أو "9781234567890")
+
+         String isbnRegex = "^(\\d{10}|\\d{13})$";
+
+         if (isbn != null && isbn.matches(isbnRegex)) {
+             this.isbn = isbn;
+         } else {
+             throw new IllegalArgumentException("Invalid ISBN: must be 10 or 13 digits.");
+         }
      }
 
      public int getNumberOfCopies() {
