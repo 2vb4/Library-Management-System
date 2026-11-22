@@ -12,12 +12,13 @@ public Member (){
     this.email = "";
     }
 
-public Member (String memberId, String name, int age, String email){
-    this.memberId = memberId;
-    this.name = name;
-    this.age = age;
-    this.email = email;
-        }
+    public Member (String memberId, String name, int age, String email){
+        setMemberId(memberId);
+        setName(name);
+        setAge(age);
+        setEmail(email);
+    }
+
 
     public String getName() {
         return name;

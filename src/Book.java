@@ -10,9 +10,9 @@
      }
 
      public Book(String author, String isbn, int numberOfCopies) {
-         this.author = author;
-         this.isbn = isbn;
-         this.numberOfCopies = numberOfCopies;
+         setAuthor(author);
+         setIsbn(isbn);
+         setNumberOfCopies(numberOfCopies);
      }
 
      // get and set for book
@@ -39,7 +39,7 @@
          if (isbn != null && isbn.matches(isbnRegex)) {
              this.isbn = isbn;
          } else {
-             throw new IllegalArgumentException("Invalid ISBN: must be 10 or 13 digits.");
+             System.out.println("Invalid ISBN: must be 10 or 13 digits.");
          }
      }
 
