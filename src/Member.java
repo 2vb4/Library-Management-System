@@ -40,7 +40,7 @@ public Member (){
         if (memberId != null && memberId.matches(idRegex)) {
             this.memberId = memberId;
         } else {
-            throw new IllegalArgumentException("Invalid ID: must start with 1 letter followed by 3 to 5 digits.");
+            System.out.println("Invalid ID: must start with 1 letter followed by 3 to 5 digits.");
         }
     }
 
