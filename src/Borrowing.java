@@ -69,5 +69,16 @@ public class Borrowing {
             System.out.println("This book is already returned.");
         }
     }
+// to print info
+    public void displayInfo() {
+        System.out.println("Borrowing ID: " + borrowingId);
+        if (member != null) {
+            System.out.println("Member: " + member.getName() + " (" + member.getMemberId() + ")");
+        }
+        if (book != null) {
+            System.out.println("Book: " + book.getTitle() + " (ISBN: " + book.getIsbn() + ")");
+        }
+        System.out.println("Returned: " + isReturned);
+    }
 
 }
