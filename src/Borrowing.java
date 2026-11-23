@@ -1,8 +1,10 @@
 public class Borrowing {
+    // المتغيرات الخاصة بعملية الاستعارة
     private String borrowingId;
     private Book book; //Aggregation
     private Member member; //Aggregation
     private boolean isReturned;
+
     private static int totalBorrowedBooks = 0; //يحسب إجمالي الكتب المستعارة في المكتبة
 
     //defult
@@ -55,21 +57,24 @@ public class Borrowing {
     public static int getTotalBorrowedBooks() {//نستدعيها باسم الكلاس
         return totalBorrowedBooks;
     }
-    public void returnBook() {
+    public void returnBook() throws IllegalArgumentException {
         // نتأكد أول إن الكتاب ما قد رجع من قبل
-        if (!isReturned) {// نغير الحالة إلى تم الترجيع
-            isReturned = true;
-            // نزيد عدد نسخ الكتاب 1 باستخدام دوال كلاس Book
+        if (isReturned) {
+            // إذا الكتاب رجع قبل كذا يعطي خطأ و يمسكه بلوك catch في Main
+            throw new IllegalArgumentException("Error: This book is already returned.");
+        }
+
+        // نزيد عدد نسخ الكتاب في المكتبة ونرجعه متاح
+        if (book != null) {
             book.setNumberOfCopies(book.getNumberOfCopies() + 1);
-            // نغير الحالة إلى تم الترجيع
             book.setAvailable(true);
-            System.out.println("Book returned successfully.");
         }
-        else {
-            System.out.println("This book is already returned.");
-        }
+
+        // نغير الحالة إلى تم الترجيع
+        isReturned = true;
+        System.out.println("Book returned successfully.");
     }
-// to print info
+    // to print info
     public void displayInfo() {
         System.out.println("Borrowing ID: " + borrowingId);
         if (member != null) {
@@ -80,5 +85,4 @@ public class Borrowing {
         }
         System.out.println("Returned: " + isReturned);
     }
-
 }
