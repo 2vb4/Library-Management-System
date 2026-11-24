@@ -83,23 +83,23 @@ Book book = searchBookByISBN(isbn);
 Member member = searchMemberByID(memberId);
 // نسوي شروط حمايه اذا الكتاب غير موجود نوقف الداله
 if (book == null){
-System.out.println("Error: Book not found.");
+System.out.println("Error: Book not found");
 return false;
         }
 if (member == null){
-     System.out.println("Error: Member not found.");
+     System.out.println("Error: Member not found");
            return false;
 }
 // نتاكد بان مصفوفه الاستعاره غير ممتلئه عن طريق المقارنه
 if (numOfBorrowings >= borrowings.length){
-  System.out.println("Error: Borrowing records array is full.");
+  System.out.println("Error: Borrowing records array is full");
       return false;
         }
 
  // ايضا نتاكد بوجود نسخه واحده على الاقل متاحه للاستعاره
 // التاكد يكون من خلال القيتر من كلاس الكتاب
  if (book.getNumberOfCopies() <= 0){
-      System.out.println("Error: No available copies for this book.");
+      System.out.println("Error: No available copies for this book");
            return false;
         }
 // بعد ذلك ننقص عدد النسخه بواحد ومن ثم نقارنها بصفر
@@ -113,7 +113,7 @@ String borrowingId = "BR" + (numOfBorrowings + 1);
 Borrowing record = new Borrowing(borrowingId, book, member);
 borrowings[numOfBorrowings]= record;
  numOfBorrowings++;
-  System.out.println("Book borrowed successfully.");
+  System.out.println("Book borrowed successfully");
       return true;
     }
 
@@ -136,7 +136,7 @@ borrowings[numOfBorrowings]= record;
            return true;
             }
         }
- System.out.println("Error: No active borrowing record found.");
+ System.out.println("Error: No active borrowing record found");
  return false;
     }
 }
