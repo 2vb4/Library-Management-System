@@ -247,5 +247,38 @@ borrowings[numOfBorrowings]= record;
             System.out.println("Error loading data from file: " + e.getMessage());
         }
     }
+// all the getter methods for the arrays and their counts >
+public Book[] getBooks() {
+        return books;
+    }
+
+    public int getNumOfBooks() {
+        return numOfBooks;
+    }
+
+    public Member[] getMembers() {
+        return members;
+    }
+
+    public int getNumOfMembers() {
+        return numOfMembers;
+    }
+
+    public Borrowing[] getBorrowings() {
+        return borrowings;
+    }
+
+    public int getNumOfBorrowings() {
+        return numOfBorrowings;
+    }
+
+    public boolean addBorrowing(Borrowing borrowing) {
+        if (numOfBorrowings < borrowings.length && borrowing != null) {
+            borrowings[numOfBorrowings] = borrowing;
+            numOfBorrowings++;
+            return true;
+        }
+        return false;
+    }
 
 }
