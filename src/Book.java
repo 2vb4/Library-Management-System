@@ -1,68 +1,84 @@
- public class Book extends LibraryItem {
-     private String author;
-     private String isbn;
-     private int numberOfCopies;
+public class Book extends LibraryItem {
+    // اضافه المتغيرات المطلوبه لكلاس الكتاب
+    private String author;
+    private String isbn;
+    private int numberOfCopies;
 
-     public Book() {
-         this.author = "";
-         this.isbn = "";
-         this.numberOfCopies = 0;
-     }
+    // الكونستركتور الفاضي يحط قيم مبدئيه
+    public Book() {
+        super();
+        this.author = "";
+        this.isbn = "";
+        this.numberOfCopies = 0;
+        setAvailable(false);
+    }
 
-     public Book(String author, String isbn, int numberOfCopies) {
-         setAuthor(author);
-         setIsbn(isbn);
-         setNumberOfCopies(numberOfCopies);
-     }
+    // كونستركتور ياخذ المؤلف والرقم وعدد النسخ
+    public Book(String author, String isbn, int numberOfCopies) {
+        super();
+        setAuthor(author);
+        setIsbn(isbn);
+        setNumberOfCopies(numberOfCopies);
+    }
 
-     // get and set for book
+    // كونستركتور كامل ياخذ كل البيانات ويمرر رقم الكتاب والعنوان لكلاس الاب عن طريق super
+    public Book(String itemId, String title, String author, String isbn, int numberOfCopies) {
+        super(itemId, title, numberOfCopies > 0);
+        setAuthor(author);
+        setIsbn(isbn);
+        setNumberOfCopies(numberOfCopies);
+    }
 
-     public String getAuthor() {
-         return author;
-     }
+    // دوال القيتر والسيتر للمؤلف
+    public String getAuthor() {
+        return author;
+    }
 
-     public void setAuthor(String author) {
-         this.author = author;
-     }
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
-     public String getIsbn() {
-         return isbn;
-     }
+    // دوال القيتر والسيتر لرقم ISBN
+    public String getIsbn() {
+        return isbn;
+    }
 
-// تراك زدت { هنا يا عزوز
+    public void setIsbn(String isbn) {
+        // نتاكد من صيغه ISBN باستخدام Regex لازم يكون 10 او 13 رقم فقط
+        String isbnRegex = "^(\\d{10}|\\d{13})$";
 
-     public void setIsbn(String isbn) {
-         // هنا نشيك على صيغة الـ ISBN: يقبل يا 10 أرقام أو 13 رقم بالضبط (زي "1234567890" أو "9781234567890")
-         String isbnRegex = "^(\\d{10}|\\d{13})$";
+        // نتاكد ان القيمه مو فاضيه وتطابق الشرط
+        if (isbn != null && isbn.matches(isbnRegex)) {
+            this.isbn = isbn;
+        } else {
+            System.out.println("Invalid ISBN: must be 10 or 13 digits.");
+        }
+    }
 
-         // نتأكد إن القيمة مو فاضية وتطابق شرط الـ RegEx
-         if (isbn != null && isbn.matches(isbnRegex)) {
-             this.isbn = isbn;
-         } else {
-             System.out.println("Invalid ISBN: must be 10 or 13 digits.");
-         }
-     }
+    // دوال القيتر والسيتر لعدد النسخ
+    public int getNumberOfCopies() {
+        return numberOfCopies;
+    }
 
-     public int getNumberOfCopies() {
-         return numberOfCopies;
-     }
+    public void setNumberOfCopies(int numberOfCopies) {
+        // في الشرط نتاكد ان عدد النسخ صفر او اكثر عشان ما يصير بالسالب
+        if (numberOfCopies >= 0) {
+            this.numberOfCopies = numberOfCopies;
+            // نحدث حاله الكتاب في كلاس الاب اذا النسخ اكبر من صفر يكون متاح واذا صفر غير متاح
+            setAvailable(numberOfCopies > 0);
+        } else {
+            System.out.println("Number of copies must be 0 or more.");
+        }
+    }
 
-     //chick if the number of copies is bigger than 0
-     public void setNumberOfCopies(int numberOfCopies) {
-         if (numberOfCopies >= 0) {
-             this.numberOfCopies = numberOfCopies;
-         } else {
-             System.out.println("Number of copies most be more  than 0 .");
-         }
-     }
-
-
-     @Override
-     public void displayInfo() {
-         System.out.println("Title: " + getTitle());
-         System.out.println("Author: " + author);
-         System.out.println("ISBN: " + isbn);
-         System.out.println("Copy number: " + numberOfCopies);
-
-     }
- }
+    // داله طباعه بيانات الكتاب كامله
+    @Override
+    public void displayInfo() {
+        System.out.println("Item ID: " + getItemId());
+        System.out.println("Title: " + getTitle());
+        System.out.println("Author: " + author);
+        System.out.println("ISBN: " + isbn);
+        System.out.println("Number of Copies: " + numberOfCopies);
+        System.out.println("Available: " + isAvailable());
+    }
+}
