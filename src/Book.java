@@ -1,4 +1,4 @@
-public class Book extends LibraryItem {
+public class Book extends LibraryItem implements Borrowable {
     // اضافه المتغيرات المطلوبه لكلاس الكتاب
     private String author;
     private String isbn;
@@ -80,5 +80,16 @@ public class Book extends LibraryItem {
         System.out.println("ISBN: " + isbn);
         System.out.println("Number of Copies: " + numberOfCopies);
         System.out.println("Available: " + isAvailable());
+    }
+    @Override
+    public void borrow(){
+        if(isAvailable()){
+            setNumberOfCopies(getNumberOfCopies()-1);
+        }
+        else {System.out.println("No available copies");}
+    }
+    @Override
+    public void returnItem(){
+        setNumberOfCopies(getNumberOfCopies()+1);
     }
 }

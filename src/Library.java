@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Library {
+public class Library implements Searchable{
     // اضافه المتغيرات المطلوبه
     private Book[] books;
     private int numOfBooks;
@@ -44,7 +44,7 @@ return true;
 return false;
         // فشل عملية الاضافه
     }
-
+    @Override
     // داله البحث عن الكتب
 public Book searchBookByTitle(String title){
 for (int i = 0; i < numOfBooks; i++) {
@@ -55,7 +55,7 @@ return books[i];
         }
 return null;
     }
-
+    @Override
 public Book searchBookByISBN(String isbn){
      // داله البحث عن الكتب بستخدام ISBN
  for (int i = 0; i < numOfBooks;i++){
@@ -67,6 +67,7 @@ public Book searchBookByISBN(String isbn){
     }
 
     // نسوي دوال البحث عن الاعضاء بنفس طريقه دوال البحث عن الكتب
+    @Override
      public Member searchMemberByName(String name) {
      for (int i = 0; i < numOfMembers; i++) {
       if (members[i] != null && members[i].getName() != null && members[i].getName().equalsIgnoreCase(name)) {
@@ -75,6 +76,7 @@ public Book searchBookByISBN(String isbn){
         }
         return null;
     }
+    @Override
 public Member searchMemberByID(String id){
 for (int i = 0; i < numOfMembers; i++) {
 if (members[i] != null && members[i].getMemberId() !=null && members[i].getMemberId().equals(id)) {
@@ -113,7 +115,7 @@ if (numOfBorrowings >= borrowings.length){
 book.setNumberOfCopies(book.getNumberOfCopies() - 1);
 if (book.getNumberOfCopies() == 0){
 book.setAvailable(false);
-        }
+        }//سويت ميثود اسمه borrow ستبدلو الكود الي فوق فيه (book.borrow)
 
 String borrowingId = "BR" + (numOfBorrowings + 1);
 Borrowing record = new Borrowing(borrowingId, book, member);
@@ -121,7 +123,7 @@ borrowings[numOfBorrowings]= record;
  numOfBorrowings++;
   System.out.println("Book borrowed successfully.");
       return true;
-    }
+    }//نفس الشي للميثود خث الاستعاره (book.returnItem)
 
     // داله ارجاع الكتاب
     public boolean returnBook(String isbn, String memberId){
@@ -245,4 +247,5 @@ borrowings[numOfBorrowings]= record;
             System.out.println("Error loading data from file: " + e.getMessage());
         }
     }
+
 }

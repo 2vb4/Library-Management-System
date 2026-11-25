@@ -7,7 +7,7 @@ public abstract class LibraryItem {
     public LibraryItem(){
         this.itemId = "";
         this.title ="";
-        this.isAvailable = true;// Jehad please chick this one is it better to be true or false
+        this.isAvailable = false;
     }
     public LibraryItem (String itemId, String title, boolean isAvailable){
         this.itemId = itemId;

@@ -1,4 +1,4 @@
-public class Magazine extends LibraryItem{
+    public class Magazine extends LibraryItem{
     private int issueNumber;
     private String publicationMonth;
 
@@ -36,7 +36,7 @@ public class Magazine extends LibraryItem{
     public String getPublicationMonth() {
         return publicationMonth;
     }
-    String[] months ={
+    private static final String[] months ={
             "January", "February", "March", "April",
             "May", "June", "July", "August",
             "September", "October", "November", "December"};
